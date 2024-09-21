@@ -3,96 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazy 2k's Side Hustle</title>
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <title>Lazy 2k's Side Hustle</title>
 </head>
 <body>
-    <header>
-        <h1>Lazy 2k's Side Hustle</h1>
-        <nav>
-            <ul>
-                <li><a href="#" id="showLogin">Login</a></li>
-                <li><a href="#" id="showSignup">Sign Up</a></li>
-                <li><a href="#" id="showSurvey" style="display: none;">Survey</a></li> <!-- Hidden until logged in -->
-            </ul>
-        </nav>
-    </header>
+    <div id="login">
+        <h2>Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+    </div>
 
-    <main>
-        <!-- Login Form -->
-        <section id="login" class="form-section">
-            <h2>Login</h2>
-            <form id="loginForm">
-                <label for="loginEmail">Email:</label>
-                <input type="email" id="loginEmail" required>
-                <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" required>
-                <button type="submit">Login</button>
-                <p id="loginError" class="error"></p>
-            </form>
-        </section>
+    <div id="signup">
+        <h2>Sign Up</h2>
+        <input type="email" id="signupEmail" placeholder="Email" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button onclick="signup()">Sign Up</button>
+    </div>
 
-        <!-- Sign Up Form -->
-        <section id="signup" class="form-section" style="display: none;">
-            <h2>Sign Up</h2>
-            <form id="signupForm">
-                <label for="signupUsername">Username:</label>
-                <input type="text" id="signupUsername" required>
-                <label for="signupEmail">Email:</label>
-                <input type="email" id="signupEmail" required>
-                <label for="signupPassword">Password:</label>
-                <input type="password" id="signupPassword" required>
-                <button type="submit">Sign Up</button>
-                <p id="signupError" class="error"></p>
-            </form>
-        </section>
+    <div id="survey" style="display:none;">
+        <h2>Survey</h2>
+        <form id="surveyForm"> <!-- Unique ID for the survey form -->
+            <!-- Example survey questions -->
+            <label for="question1">Question 1: How satisfied are you?</label>
+            <select id="question1" required>
+                <option value="">Select...</option>
+                <option value="very_satisfied">Very Satisfied</option>
+                <option value="satisfied">Satisfied</option>
+                <option value="neutral">Neutral</option>
+                <option value="dissatisfied">Dissatisfied</option>
+                <option value="very_dissatisfied">Very Dissatisfied</option>
+            </select>
+            <br>
 
-        <!-- Survey Section -->
-        <section id="survey" class="form-section" style="display: none;">
-            <h2>Survey</h2>
-            <form id="surveyForm">
-                <p>1. How satisfied are you with this survey?</p>
-                <label><input type="radio" name="satisfaction" value="very_satisfied"> Very Satisfied</label>
-                <label><input type="radio" name="satisfaction" value="satisfied"> Satisfied</label>
-                <label><input type="radio" name="satisfaction" value="neutral"> Neutral</label>
-                <label><input type="radio" name="satisfaction" value="dissatisfied"> Dissatisfied</label>
-                <label><input type="radio" name="satisfaction" value="very_dissatisfied"> Very Dissatisfied</label>
+            <label for="question2">Question 2: Any comments?</label>
+            <textarea id="question2"></textarea>
+            <br>
 
-                <button type="submit">Submit Survey</button>
-                <p id="surveyMessage"></p>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2024 Lazy 2k's Side Hustle. All rights reserved.</p>
-    </footer>
+            <button type="submit">Submit Survey</button>
+        </form>
+    </div>
 
     <script src="script.js"></script>
-    <!-- Add this inside your body tag -->
-<div id="login">
-    <h2>Login</h2>
-    <input type="email" id="loginEmail" placeholder="Email" required>
-    <input type="password" id="loginPassword" placeholder="Password" required>
-    <button onclick="login()">Login</button>
-</div>
-
-<div id="signup">
-    <h2>Sign Up</h2>
-    <input type="email" id="signupEmail" placeholder="Email" required>
-    <input type="password" id="signupPassword" placeholder="Password" required>
-    <button onclick="signup()">Sign Up</button>
-</div>
-
-<div id="survey" style="display:none;">
-    <h2>Survey</h2>
-    <form id="surveyForm">
-        <!-- Add your survey questions here -->
-        <button type="submit">Submit Survey</button>
-    </form>
-</div>
-
 </body>
 </html>
