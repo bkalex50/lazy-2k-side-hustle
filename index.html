@@ -71,5 +71,28 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Add this inside your body tag -->
+<div id="login">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+</div>
+
+<div id="signup">
+    <h2>Sign Up</h2>
+    <input type="email" id="signupEmail" placeholder="Email" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button onclick="signup()">Sign Up</button>
+</div>
+
+<div id="survey" style="display:none;">
+    <h2>Survey</h2>
+    <form id="surveyForm">
+        <!-- Add your survey questions here -->
+        <button type="submit">Submit Survey</button>
+    </form>
+</div>
+
 </body>
 </html>
