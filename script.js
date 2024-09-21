@@ -27,3 +27,7 @@ function login() {
         alert("Invalid email or password. Please try again.");
     }
 }
+document.getElementById('surveyForm').onsubmit = function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    alert("Survey submitted! Thank you for your feedback.");
+};
