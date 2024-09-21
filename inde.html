@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy 2k's Side Hustle</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Lazy 2k's Side Hustle</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="showLogin">Login</a></li>
+                <li><a href="#" id="showSignup">Sign Up</a></li>
+                <li><a href="#" id="showSurvey" style="display: none;">Survey</a></li> <!-- Hidden until logged in -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Login Form -->
+        <section id="login" class="form-section">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" required>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" required>
+                <button type="submit">Login</button>
+                <p id="loginError" class="error"></p>
+            </form>
+        </section>
+
+        <!-- Sign Up Form -->
+        <section id="signup" class="form-section" style="display: none;">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label for="signupUsername">Username:</label>
+                <input type="text" id="signupUsername" required>
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" required>
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" required>
+                <button type="submit">Sign Up</button>
+                <p id="signupError" class="error"></p>
+            </form>
+        </section>
+
+        <!-- Survey Section -->
+        <section id="survey" class="form-section" style="display: none;">
+            <h2>Survey</h2>
+            <form id="surveyForm">
+                <p>1. How satisfied are you with this survey?</p>
+                <label><input type="radio" name="satisfaction" value="very_satisfied"> Very Satisfied</label>
+                <label><input type="radio" name="satisfaction" value="satisfied"> Satisfied</label>
+                <label><input type="radio" name="satisfaction" value="neutral"> Neutral</label>
+                <label><input type="radio" name="satisfaction" value="dissatisfied"> Dissatisfied</label>
+                <label><input type="radio" name="satisfaction" value="very_dissatisfied"> Very Dissatisfied</label>
+
+                <button type="submit">Submit Survey</button>
+                <p id="surveyMessage"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Lazy 2k's Side Hustle. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
