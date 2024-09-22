@@ -1,33 +1,88 @@
-// Sign Up Functionality
-function signup() {
+// Mock user data (for demo purposes, no backend yet)
+const users = JSON.parse(localStorage.getItem('users')) || {};
+let loggedInUser = null;
+
+// Initialize points (stored in local storage)
+let points = parseInt(localStorage.getItem('points')) || 0;
+
+// Display points
+document.getElementById('points').innerText = points;
+
+// Show forms based on navigation
+document.getElementById('showLogin').addEventListener('click', function() {
+    document.getElementById('login').style.display = 'block';
+    document.getElementById('signup').style.display = 'none';
+    document.getElementById('survey').style.display = 'none';
+});
+
+document.getElementById('showSignup').addEventListener('click', function() {
+    document.getElementById('signup').style.display = 'block';
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('survey').style.display = 'none';
+});
+
+document.getElementById('showSurvey').addEventListener('click', function() {
+    if (loggedInUser) {
+        document.getElementById('survey').style.display = 'block';
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('signup').style.display = 'none';
+        document.getElementById('points-section').style.display = 'block';
+    }
+});
+
+// Handle signup form submission
+document.getElementById('signupForm').onsubmit = function(event) {
+    event.preventDefault();
+    const username = document.getElementById('signupUsername').value;
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
 
-    if (!email || !password) {
-        alert("Please fill in all fields.");
-        return;
+    if (users[email]) {
+        document.getElementById('signupError').innerText = 'User already exists!';
+    } else {
+        users[email] = { username, password, points: 0 };
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Sign up successful! Please log in.');
+        document.getElementById('signupForm').reset();
+        document.getElementById('signup').style.display = 'none';
+        document.getElementById('login').style.display = 'block';
     }
+};
 
-    localStorage.setItem(email, password);
-    alert("Sign up successful! You can now log in.");
-}
-
-// Login Functionality
-function login() {
+// Handle login form submission
+document.getElementById('loginForm').onsubmit = function(event) {
+    event.preventDefault();
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-    const storedPassword = localStorage.getItem(email);
 
-    if (storedPassword === password) {
-        alert("Login successful!");
+    if (users[email] && users[email].password === password) {
+        loggedInUser = email;
+        alert('Login successful!');
         document.getElementById('login').style.display = 'none';
-        document.getElementById('signup').style.display = 'none';
-        document.getElementById('survey').style.display = 'block';
+        document.getElementById('showSurvey').style.display = 'inline';
+        document.getElementById('points').innerText = users[loggedInUser].points;
+        document.getElementById('points-section').style.display = 'block';
     } else {
-        alert("Invalid email or password. Please try again.");
+        document.getElementById('loginError').innerText = 'Invalid email or password!';
     }
-}
+};
+
+// Handle survey form submission
 document.getElementById('surveyForm').onsubmit = function(event) {
-    event.preventDefault(); // Prevent the default form submission
-    alert("Survey submitted! Thank you for your feedback.");
+    event.preventDefault();
+
+    if (loggedInUser) {
+        points += 10; // Award points
+        users[loggedInUser].points += 10;
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('points', points);
+
+        // Update points display
+        document.getElementById('points').innerText = points;
+
+        alert('Survey submitted! You earned 10 points.');
+        document.getElementById('surveyForm').reset();
+    } else {
+        alert('Please log in to complete the survey.');
+    }
 };
