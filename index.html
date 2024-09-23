@@ -19,7 +19,7 @@
     </div>
     <header>
         <div class="logo">
-            <p>@bkalex50</p>
+            <p>@bkalex</p>
         </div>
         <h1>Lazy 2k's Side Hustle</h1>
         <nav>
@@ -32,6 +32,7 @@
     </header>
 
     <main>
+        <!-- Login Form -->
         <section id="login" class="form-section">
             <h2>Login</h2>
             <form id="loginForm">
@@ -40,11 +41,11 @@
                 <label for="loginPassword">Password:</label>
                 <input type="password" id="loginPassword" required>
                 <button type="submit">Login</button>
-                <button type="button" id="googleSignIn">Sign in with Google</button>
                 <p id="loginError" class="error"></p>
             </form>
         </section>
 
+        <!-- Sign Up Form -->
         <section id="signup" class="form-section" style="display: none;">
             <h2>Sign Up</h2>
             <form id="signupForm">
@@ -59,30 +60,11 @@
             </form>
         </section>
 
+        <!-- Survey Section -->
         <section id="survey" class="form-section" style="display: none;">
             <h2>Survey</h2>
             <form id="surveyForm">
-                <p>1. How satisfied are you with this survey?</p>
-                <label class="toggle">
-                    <input type="radio" name="satisfaction" value="very_satisfied" required>
-                    <span class="slider"></span> Very Satisfied
-                </label>
-                <label class="toggle">
-                    <input type="radio" name="satisfaction" value="satisfied">
-                    <span class="slider"></span> Satisfied
-                </label>
-                <label class="toggle">
-                    <input type="radio" name="satisfaction" value="neutral">
-                    <span class="slider"></span> Neutral
-                </label>
-                <label class="toggle">
-                    <input type="radio" name="satisfaction" value="dissatisfied">
-                    <span class="slider"></span> Dissatisfied
-                </label>
-                <label class="toggle">
-                    <input type="radio" name="satisfaction" value="very_dissatisfied">
-                    <span class="slider"></span> Very Dissatisfied
-                </label>
+                <div id="surveyQuestions"></div>
                 <button type="submit">Submit Survey</button>
                 <p id="surveyMessage"></p>
             </form>
@@ -93,6 +75,26 @@
         <p>© 2024 Lazy 2k's Side Hustle. All rights reserved.</p>
     </footer>
 
-    <script src="script.js" type="module"></script>
+    <script src="script.js"></script>
+    <script type="module">
+        // Import Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAqjwMfdxl8xqjsZKrVH5FDe5S4O24BEQc",
+            authDomain: "lazy-2k-side-hustle.firebaseapp.com",
+            projectId: "lazy-2k-side-hustle",
+            storageBucket: "lazy-2k-side-hustle.appspot.com",
+            messagingSenderId: "974423991173",
+            appId: "1:974423991173:web:9c389564fa115f2de4daec",
+            measurementId: "G-N7NHWFTDFM"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+    </script>
 </body>
 </html>
