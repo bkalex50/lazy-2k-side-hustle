@@ -1,144 +1,201 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f7f7f7;
-    color: #333;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #282c34;
     color: white;
-    padding: 1rem;
+    padding: 10px 20px;
     text-align: center;
 }
 
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
 .logo p {
+    font-size: 1.2em;
     font-weight: bold;
-    font-size: 1.5rem;
+    margin: 0;
+    color: #61dafb;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
 nav ul li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
 nav ul li a {
-    color: white;
+    color: #61dafb;
     text-decoration: none;
+    font-weight: 600;
 }
 
-h1 {
-    margin: 0.5rem 0;
-}
-
-.form-section {
-    display: none;
+main {
     padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-    width: 100%;
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #282c34;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+}
+
+input, button {
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #61dafb;
     color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1.2rem;
 }
 
 button:hover {
-    background-color: #45a049;
-}
-
-.error {
-    color: red;
-    margin-top: 10px;
+    background-color: #21a1f1;
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #4CAF50;
+    background-color: #282c34;
     color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
+.error {
+    color: red;
+    font-size: 0.9rem;
+}
+
+#surveyMessage {
+    color: green;
+}
+
+/* Loading Animation Styles */
 #loading-animation {
-    display: none; /* Hide loading animation */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    background-color: #f4f4f4;
 }
 
-/* Skeleton loading styles */
 .skeleton-head {
+    position: relative;
     width: 100px;
     height: 100px;
-    background: #e0e0e0;
+    background-color: #ccc;
     border-radius: 50%;
-    margin: 20px auto;
+    animation: headMove 2s infinite;
 }
 
+/* Eyes */
 .eyes {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
 }
 
 .eye {
     width: 20px;
-    height: 10px;
-    background: #c0c0c0;
-    border-radius: 5px;
-}
-
-.mouth {
-    width: 50px;
-    height: 10px;
-    background: #c0c0c0;
-    border-radius: 5px;
-    margin: 10px auto;
-}
-
-/* Toggle slider for satisfaction question */
-.toggle {
-    display: block;
-    margin: 10px 0;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
     position: relative;
 }
 
-.toggle input {
-    display: none;
-}
-
-.slider {
-    width: 100%;
-    height: 30px;
-    background: #ccc;
-    border-radius: 15px;
+.eye::before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border-radius: 50%;
+    left: 4px;
+    top: 4px;
+    animation: eyeMove 2s infinite;
 }
 
-.toggle input:checked + .slider {
-    background: #4CAF50;
+/* Mouth */
+.mouth {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: black;
+}
+
+/* Head Movement Animation */
+@keyframes headMove {
+    0% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(-10px); }
+}
+
+/* Eye Movement Animation */
+@keyframes eyeMove {
+    0%, 100% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+}
+
+#loading-animation {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 999;
 }
