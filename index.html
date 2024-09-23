@@ -42,6 +42,7 @@
                 <label for="loginPassword">Password:</label>
                 <input type="password" id="loginPassword" required>
                 <button type="submit">Login</button>
+                <button type="button" id="googleSignIn">Sign in with Google</button>
                 <p id="loginError" class="error"></p>
             </form>
         </section>
@@ -97,28 +98,6 @@
         <p>© 2024 Lazy 2k's Side Hustle. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
-        import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-        
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAqjwMfdxl8xqjsZKrVH5FDe5S4O24BEQc",
-            authDomain: "lazy-2k-side-hustle.firebaseapp.com",
-            projectId: "lazy-2k-side-hustle",
-            storageBucket: "lazy-2k-side-hustle.appspot.com",
-            messagingSenderId: "974423991173",
-            appId: "1:974423991173:web:9c389564fa115f2de4daec",
-            measurementId: "G-N7NHWFTDFM"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-    </script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
