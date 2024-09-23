@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAqjwMfdxl8xqjsZKrVH5FDe5S4O24BEQc",
     authDomain: "lazy-2k-side-hustle.firebaseapp.com",
@@ -14,12 +11,10 @@ const firebaseConfig = {
     measurementId: "G-N7NHWFTDFM"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-// Toggle forms (Login, Sign Up, Survey)
+// Toggle forms
 document.getElementById('showLogin').addEventListener('click', function(event) {
     event.preventDefault();
     document.getElementById('login').style.display = 'block';
@@ -34,7 +29,7 @@ document.getElementById('showSignup').addEventListener('click', function(event) 
     document.getElementById('survey').style.display = 'none';
 });
 
-// Login Function
+// Login
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -42,7 +37,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('loginPassword').value;
 
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(() => {
             alert("Login successful!");
             document.getElementById('login').style.display = 'none';
             document.getElementById('survey').style.display = 'block';
@@ -53,7 +48,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         });
 });
 
-// Sign-Up Function
+// Sign Up
 document.getElementById('signupForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -61,7 +56,7 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
     const password = document.getElementById('signupPassword').value;
 
     createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(() => {
             alert("Sign up successful!");
             document.getElementById('signup').style.display = 'none';
             document.getElementById('login').style.display = 'block';
@@ -72,11 +67,11 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
         });
 });
 
-// Google Sign-In Function
+// Google Sign-In
 document.getElementById('googleSignIn').addEventListener('click', function() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-        .then((result) => {
+        .then(() => {
             alert("Google sign-in successful!");
             document.getElementById('login').style.display = 'none';
             document.getElementById('survey').style.display = 'block';
@@ -87,29 +82,19 @@ document.getElementById('googleSignIn').addEventListener('click', function() {
         });
 });
 
-// Handle survey form submission
+// Survey Submission
 document.getElementById('surveyForm').addEventListener('submit', function(event) {
     event.preventDefault();
     document.getElementById('surveyMessage').textContent = 'Survey submitted successfully. Thank you!';
 });
 
-// Wait for the window to fully load
-window.onload = function() {
-    // Hide the loading animation
-    document.getElementById('loading-animation').style.display = 'none';
-    // Show the login form
-    document.getElementById('login').style.display = 'block';
-};
-
 // Firebase Auth State Change
-onAuthStateChanged(auth, function(user) {
+onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in, show the survey
         document.getElementById('survey').style.display = 'block';
         document.getElementById('login').style.display = 'none';
         document.getElementById('signup').style.display = 'none';
     } else {
-        // No user is signed in, show the login form
         document.getElementById('survey').style.display = 'none';
         document.getElementById('login').style.display = 'block';
         document.getElementById('signup').style.display = 'none';
