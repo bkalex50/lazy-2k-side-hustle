@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lazy 2k's Side Hustle</title>
+    <title>Lazy 2k's Side Hustle Survey</title>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="loading-animation">
+        <div class="skeleton-head">
+            <div class="eyes">
+                <div class="eye left-eye"></div>
+                <div class="eye right-eye"></div>
+            </div>
+            <div class="mouth"></div>
+        </div>
+    </div>
     <header>
+        <div class="logo">
+            <p>@bkalex50</p>
+        </div>
         <h1>Lazy 2k's Side Hustle</h1>
         <nav>
             <ul>
@@ -54,21 +66,30 @@
             <h2>Survey</h2>
             <form id="surveyForm">
                 <p>1. How satisfied are you with this survey?</p>
-                <label><input type="radio" name="satisfaction" value="very_satisfied" required> Very Satisfied</label>
-                <label><input type="radio" name="satisfaction" value="satisfied"> Satisfied</label>
-                <label><input type="radio" name="satisfaction" value="neutral"> Neutral</label>
-                <label><input type="radio" name="satisfaction" value="dissatisfied"> Dissatisfied</label>
-                <label><input type="radio" name="satisfaction" value="very_dissatisfied"> Very Dissatisfied</label>
+                <label class="toggle">
+                    <input type="radio" name="satisfaction" value="very_satisfied">
+                    <span class="slider"></span> Very Satisfied
+                </label>
+                <label class="toggle">
+                    <input type="radio" name="satisfaction" value="satisfied">
+                    <span class="slider"></span> Satisfied
+                </label>
+                <label class="toggle">
+                    <input type="radio" name="satisfaction" value="neutral">
+                    <span class="slider"></span> Neutral
+                </label>
+                <label class="toggle">
+                    <input type="radio" name="satisfaction" value="dissatisfied">
+                    <span class="slider"></span> Dissatisfied
+                </label>
+                <label class="toggle">
+                    <input type="radio" name="satisfaction" value="very_dissatisfied">
+                    <span class="slider"></span> Very Dissatisfied
+                </label>
 
                 <button type="submit">Submit Survey</button>
                 <p id="surveyMessage"></p>
             </form>
-        </section>
-
-        <!-- Points Section -->
-        <section id="points-section" style="display: none;">
-            <h2>Your Points</h2>
-            <p id="points">0</p>
         </section>
     </main>
 
@@ -77,5 +98,27 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAqjwMfdxl8xqjsZKrVH5FDe5S4O24BEQc",
+            authDomain: "lazy-2k-side-hustle.firebaseapp.com",
+            projectId: "lazy-2k-side-hustle",
+            storageBucket: "lazy-2k-side-hustle.appspot.com",
+            messagingSenderId: "974423991173",
+            appId: "1:974423991173:web:9c389564fa115f2de4daec",
+            measurementId: "G-N7NHWFTDFM"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+    </script>
 </body>
 </html>
